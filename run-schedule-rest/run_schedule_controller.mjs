@@ -24,3 +24,18 @@ app.listen(PORT, () => {
             res.status(400).json({ Error: 'Request failed' });
         });
 });
+
+/**
+ * Retrive all workouts
+ */
+ app.get('/all_workouts', (req, res) => {
+    workouts.findWorkouts(req.query, '', 0)
+        .then(workouts => {
+            res.status(200).json(workouts);
+        })
+        .catch(error => {
+            console.error(error);
+            // In case of an error, send back status code 400.
+            res.status(400).json({ Error: 'Request failed' });
+        });
+});
