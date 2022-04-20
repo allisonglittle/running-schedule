@@ -34,3 +34,20 @@ mongoose.set('useCreateIndex', true);
  * Compile the model from the schema
  */
  const Workout = mongoose.model("Workout", workoutSchema);
+
+ /**
+  * Create a workout
+  * @param {String} name 
+  * @param {Number} day 
+  * @param {Number} distance 
+  * @param {Number} duration 
+  * @param {String} target 
+  * @param {String} pace 
+  */
+const createWorkout = async ( name, day, distance, duration, target, pace ) => {
+    // Call the constructor to create a new instance of model class Workout
+    const workout = new Workout({ name: name, day: day, distance: distance, duration: duration, 
+        target: target, pace: pace})
+    // Call save to persist instance as an object in MongoDB
+    return workout.save()
+}
