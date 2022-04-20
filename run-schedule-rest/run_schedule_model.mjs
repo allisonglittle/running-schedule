@@ -51,3 +51,7 @@ const createWorkout = async ( name, day, distance, duration, target, pace ) => {
     // Call save to persist instance as an object in MongoDB
     return workout.save()
 }
+
+
+
+export { createWorkout };
