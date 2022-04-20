@@ -1,0 +1,12 @@
+###
+POST http://localhost:3000/workout HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Easy Run",
+    "day": 1,
+    "distance": 3.5,
+    "duration": 35,
+    "target": "Distance",
+    "pace": "10:00"
+}
