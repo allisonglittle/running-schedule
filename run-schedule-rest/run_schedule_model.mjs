@@ -17,3 +17,20 @@ db.once('open', () => {
 
 // Have mongoose create indexes, this helps with faster querying
 mongoose.set('useCreateIndex', true);
+
+/**
+ * Define the schema
+ */
+ const workoutSchema = mongoose.Schema({
+    name: { type: String, required: true },
+    day: { type: Number, required: true },
+    distance: { type: Number, required: true },
+    duration: { type: Number, required: true },
+    target: { type: String, required: true },
+    pace: { type: String, required: true }
+});
+
+/**
+ * Compile the model from the schema
+ */
+ const Workout = mongoose.model("Workout", workoutSchema);
