@@ -10,3 +10,6 @@ content-type: application/json
     "target": "Distance",
     "pace": "10:00"
 }
+
+###
+GET http://localhost:3000/all_workouts HTTP/1.1
