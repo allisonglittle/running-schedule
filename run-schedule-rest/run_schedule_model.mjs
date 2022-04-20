@@ -52,6 +52,19 @@ const createWorkout = async ( name, day, distance, duration, target, pace ) => {
     return workout.save()
 }
 
+/**
+ * Return all workouts that fit the filter, projection and the limit parameters
+ * @param {Object} filter 
+ * @param {String} projection 
+ * @param {Number} limit 
+ * @returns 
+ */
+const findWorkouts = async (filter, projection, limit) => {
+    const query = Workout.find(filter)
+        .select(projection)
+        .limit(limit);
+    return query.exec();
+}
 
 
-export { createWorkout };
+export { createWorkout, findWorkouts };
