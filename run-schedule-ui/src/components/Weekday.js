@@ -1,7 +1,8 @@
 import React from "react";
 import Workout from "./Workout";
-import { useState, useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
+import Popup from 'reactjs-popup';
+import CreateWorkout from "../pages/CreateWorkout";
 
 function Weekday({ weekday, workouts }) {
 
@@ -33,7 +34,11 @@ function Weekday({ weekday, workouts }) {
 
     return (
         <>
-            <h1>{dayName}</h1>
+            <h1>{dayName}
+                <Popup trigger={<button>+</button>}>
+                    <CreateWorkout weekday={weekday}/>
+                </Popup>
+            </h1>
             <ListGroup>
                 {workouts.map((workout, i) => <Workout workout={workout} key={i} />)}
             </ListGroup>
