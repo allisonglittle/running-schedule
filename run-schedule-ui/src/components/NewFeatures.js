@@ -7,13 +7,13 @@ function NewFeatures() {
 
     return (
       <>
-        <Alert show={show} variant="Success">
-          <Alert.Heading>New Features</Alert.Heading>
+        <Alert show={show} variant="success">
+          <Alert.Heading>New Features:</Alert.Heading>
           <p>
             Click <button disabled={true}>+</button> by a day name to add a workout to the schedule.
           </p>
           <hr />
-          <div className="d-flex justify-content-end">
+          <div>
             <Button onClick={() => setShow(false)} variant="outline-success">
               Close
             </Button>
