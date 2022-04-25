@@ -1,6 +1,7 @@
 import React from 'react';
 import Calendar from '../components/Calendar';
 import { useState, useEffect } from 'react';
+import NewFeatures from '../components/NewFeatures';
 // import { useHistory } from 'react-router-dom';
 
 function HomePage() {
@@ -23,7 +24,8 @@ function HomePage() {
 
     return (
         <>
-            <h1>Welcome to the run schedule</h1>
+            <NewFeatures />
+            <h1>Run Schedule</h1>
             <Calendar workouts={workouts} />
         </>
     );
