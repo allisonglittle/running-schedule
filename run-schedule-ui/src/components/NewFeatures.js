@@ -7,7 +7,7 @@ function NewFeatures() {
 
     return (
       <>
-        <Alert show={show} variant="primary">
+        <Alert show={show} variant="Success">
           <Alert.Heading>New Features</Alert.Heading>
           <p>
             Click <button disabled={true}>+</button> by a day name to add a workout to the schedule.
@@ -20,7 +20,7 @@ function NewFeatures() {
           </div>
         </Alert>
   
-        {!show && <Button onClick={() => setShow(true)}>Show Alert</Button>}
+        {!show && <Button onClick={() => setShow(true)}>Show Notifications</Button>}
       </>
     );
 }
