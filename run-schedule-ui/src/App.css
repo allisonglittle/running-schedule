@@ -28,6 +28,55 @@
   color: #61dafb;
 }
 
+.Calendar-table {
+  border-collapse: collapse;
+  width: 100%;
+  padding: 20pt;
+  align-items: center;
+  align-self: center;
+  table-layout: fixed;
+  vertical-align: top;
+}
+
+.Calendar-day {
+  vertical-align: top;
+}
+
+.Day-name {
+  border: 1pt;
+  background-color: bisque;
+  padding: 5pt;
+}
+
+.Add-button{
+  margin: 3pt;
+  vertical-align: top;
+  box-shadow: #282c34;
+  border-radius: 12px;
+}
+
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+  border: 10px;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

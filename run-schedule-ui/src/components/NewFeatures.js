@@ -10,7 +10,7 @@ function NewFeatures() {
         <Alert show={show} variant="success">
           <Alert.Heading>New Features:</Alert.Heading>
           <p>
-            Click <button disabled={true}>+</button> by a day name to add a workout to the schedule.
+            Click <button className="Add-button" disabled={true}>+</button> by a day name to add a workout to the schedule.
           </p>
           <hr />
           <div>

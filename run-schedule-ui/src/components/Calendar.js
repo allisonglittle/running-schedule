@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Col, Row } from 'react-bootstrap';
+// import { Container, Col, Row } from 'react-bootstrap';
 import Weekday from "./Weekday";
 
 function Calendar({ workouts }) {
@@ -18,7 +18,7 @@ function Calendar({ workouts }) {
 
         //     <ListGroup.Item>Tuesday</ListGroup.Item>
         // </ListGroup>
-        <table>
+        <table className="Calendar-table">
             {/* <thead>
                 <tr>
                     <th>Monday</th>
@@ -28,13 +28,13 @@ function Calendar({ workouts }) {
             </thead> */}
             <tbody>
                 <tr>
-                    <td><Weekday weekday={1} workouts={workouts.filter(m => m.day === 1)} /></td>
-                    <td><Weekday weekday={2} workouts={workouts.filter(m => m.day === 2)} /></td>
-                    <td><Weekday weekday={3} workouts={workouts.filter(m => m.day === 3)} /></td>
-                    <td><Weekday weekday={4} workouts={workouts.filter(m => m.day === 4)} /></td>
-                    <td><Weekday weekday={5} workouts={workouts.filter(m => m.day === 5)} /></td>
-                    <td><Weekday weekday={6} workouts={workouts.filter(m => m.day === 6)} /></td>
-                    <td><Weekday weekday={7} workouts={workouts.filter(m => m.day === 7)} /></td>
+                    <td className="Calendar-day"><Weekday weekday={1} workouts={workouts.filter(m => m.day === 1)} /></td>
+                    <td className="Calendar-day"><Weekday weekday={2} workouts={workouts.filter(m => m.day === 2)} /></td>
+                    <td className="Calendar-day"><Weekday weekday={3} workouts={workouts.filter(m => m.day === 3)} /></td>
+                    <td className="Calendar-day"><Weekday weekday={4} workouts={workouts.filter(m => m.day === 4)} /></td>
+                    <td className="Calendar-day"><Weekday weekday={5} workouts={workouts.filter(m => m.day === 5)} /></td>
+                    <td className="Calendar-day"><Weekday weekday={6} workouts={workouts.filter(m => m.day === 6)} /></td>
+                    <td className="Calendar-day"><Weekday weekday={7} workouts={workouts.filter(m => m.day === 7)} /></td>
                 </tr>
 
             </tbody>

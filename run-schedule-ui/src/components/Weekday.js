@@ -34,11 +34,11 @@ function Weekday({ weekday, workouts }) {
 
     return (
         <>
-            <h1>{dayName}
-                <Popup trigger={<button>+</button>}>
+            <h3 className="Day-name">{dayName} 
+                <Popup className='popup-content' trigger={<button className="Add-button">+</button>}>
                     <CreateWorkout weekday={weekday}/>
                 </Popup>
-            </h1>
+            </h3>
             <ListGroup>
                 {workouts.map((workout, i) => <Workout workout={workout} key={i} />)}
             </ListGroup>
