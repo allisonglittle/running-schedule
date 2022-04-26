@@ -33,6 +33,8 @@ function CreateWorkout({ weekday }) {
 
     return (
         <>
+            <button onClick={() => navigate.push("/")}>Cancel</button>
+            <br />
             <h1>New Workout</h1>
             <WorkoutDetails name={name} setName={setName} day={day} setDay={setDay} distance={distance} setDistance={setDistance} duration={duration} setDuration={setDuration} target={target} setTarget={setTarget} pace={pace} setPace={setPace} />
             <button onClick={addWorkout}>Add Workout</button>

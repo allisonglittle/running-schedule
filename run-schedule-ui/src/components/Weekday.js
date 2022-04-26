@@ -35,7 +35,7 @@ function Weekday({ weekday, workouts }) {
     return (
         <>
             <h3 className="Day-name">{dayName} 
-                <Popup className='popup-content' trigger={<button className="Add-button">+</button>}>
+                <Popup className='popup-content' closeOnDocumentClick={true} trigger={<button className="Add-button">+</button>}>
                     <CreateWorkout weekday={weekday}/>
                 </Popup>
             </h3>
