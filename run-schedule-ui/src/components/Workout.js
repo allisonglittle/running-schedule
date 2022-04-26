@@ -7,7 +7,8 @@ function Workout({ workout }) {
         //     {workout.name}
         // </>
         <ListGroup.Item>
-            {workout.name}
+            {workout.name} 
+            <button onClick={() => window.confirm('Are you sure you wish to delete this item?')}>Delete</button>
         </ListGroup.Item>
     );
 }
