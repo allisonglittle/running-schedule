@@ -26,6 +26,12 @@ function HomePage() {
         <>
             <NewFeatures />
             <h1>Run Schedule</h1>
+            <label>Choose week
+                <select>
+                    <option>Week 1</option>
+                    <option>Week 2</option>
+                </select>
+            </label>
             <Calendar workouts={workouts} />
         </>
     );
