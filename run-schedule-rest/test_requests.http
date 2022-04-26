@@ -12,4 +12,18 @@ content-type: application/json
 }
 
 ###
+POST http://localhost:3000/workout HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Tempo Run",
+    "day": 2,
+    "distance": 4,
+    "duration": 36,
+    "target": "Distance",
+    "pace": "9:00"
+}
+
+
+###
 GET http://localhost:3000/all_workouts HTTP/1.1
