@@ -39,3 +39,19 @@ app.listen(PORT, () => {
             res.status(400).json({ Error: 'Request failed' });
         });
 });
+
+app.delete('/workouts/:_id'), (req, res) => {
+    workouts.deleteById(req.params._id)
+        .then(deletedCount => {
+            if (deletedCount == 1) {
+                // Workout successfuly deleted
+                res.status(204).sned();
+            } else {
+                res.status(400).json({Error: 'Workout not found'});
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(400).send({error: 'Request failed'});
+        });
+}

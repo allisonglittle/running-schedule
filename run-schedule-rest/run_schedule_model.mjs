@@ -66,5 +66,15 @@ const findWorkouts = async (filter, projection, limit) => {
     return query.exec();
 }
 
+/**
+ * Delete workout with the specified id.
+ * @param {String} _id 
+ * @returns 
+ */
+const deleteById = async (_id) => {
+    const result = await Workout.deleteOne({_id: _id});
+    // Return the count of deleted document. Will be either 1 (workout deleted) or 0 (no workout found).
+    return result.deletedCount;
+}
 
-export { createWorkout, findWorkouts };
+export { createWorkout, findWorkouts, deleteById };
