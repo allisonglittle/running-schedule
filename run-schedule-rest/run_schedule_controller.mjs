@@ -40,7 +40,10 @@ app.listen(PORT, () => {
         });
 });
 
-app.delete('/workouts/:_id'), (req, res) => {
+/**
+ * Delete workout. Id is passed in query parameters.
+ */
+app.delete('/workouts/:_id', (req, res) => {
     workouts.deleteById(req.params._id)
         .then(deletedCount => {
             if (deletedCount == 1) {
@@ -54,4 +57,4 @@ app.delete('/workouts/:_id'), (req, res) => {
             console.error(error);
             res.status(400).send({error: 'Request failed'});
         });
-}
+});
