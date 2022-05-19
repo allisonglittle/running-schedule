@@ -1,10 +1,18 @@
 import * as workouts from './run_schedule_model.mjs';
 import express from 'express';
+import fetch from "node-fetch";
+// import cors from 'cors';
+
+// const corsOptions = {
+//     origin: 'http://localhost:8000',
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
 const PORT = 3000;
 
 const app = express();
 app.use(express.json());
+// app.use(cors);
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`);
@@ -13,7 +21,7 @@ app.listen(PORT, () => {
 /**
  * Create new workout with input parameters in request body
  */
- app.post('/workout', (req, res) => {
+app.post('/workout', (req, res) => {
     workouts.createWorkout(req.body.name, req.body.day, req.body.distance, req.body.duration, req.body.target, req.body.pace)
         .then(Workout => {
             res.status(201).json(Workout);
@@ -28,7 +36,7 @@ app.listen(PORT, () => {
 /**
  * Retrive all workouts
  */
- app.get('/all_workouts', (req, res) => {
+app.get('/all_workouts', (req, res) => {
     workouts.findWorkouts(req.query, '', 0)
         .then(workouts => {
             res.status(200).json(workouts);
@@ -50,11 +58,27 @@ app.delete('/workouts/:_id', (req, res) => {
                 // Workout successfuly deleted
                 res.status(204).sned();
             } else {
-                res.status(400).json({Error: 'Workout not found'});
+                res.status(400).json({ Error: 'Workout not found' });
             }
         })
         .catch(error => {
             console.error(error);
-            res.status(400).send({error: 'Request failed'});
+            res.status(400).send({ error: 'Request failed' });
+        });
+});
+
+/**
+ * Retrive workout distance sum
+ */
+app.get('/sum_workouts', (req, res) => {
+    workouts.sumOfDistance(req.query.unit)
+        .then(distance => {
+            console.log(distance);
+            res.status(200).json({ Distance: distance });
+        })
+        .catch(error => {
+            console.error(error);
+            // In case of an error, send back status code 400.
+            res.status(400).json({ Error: 'Request failed' });
         });
 });

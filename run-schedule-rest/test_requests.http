@@ -17,7 +17,7 @@ content-type: application/json
 
 {
     "name": "Tempo Run",
-    "day": 2,
+    "day": 7,
     "distance": 4,
     "duration": 36,
     "target": "Distance",
@@ -27,3 +27,14 @@ content-type: application/json
 
 ###
 GET http://localhost:3000/all_workouts HTTP/1.1
+
+
+###
+GET https://distance-conversion.herokuapp.com/miles-to-km?miles=2.4 HTTP/1.1
+
+###
+GET http://localhost:3000/sum_workouts?unit=miles HTTP/1.1
+
+###
+GET http://localhost:3000/sum_workouts?unit=km HTTP/1.1
+

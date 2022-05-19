@@ -1,14 +1,14 @@
 import React from "react";
 import { ListGroup } from "react-bootstrap";
 
-function Workout({ workout }) {
+function Workout({ workout, onDelete }) {
     return (
         // <>
         //     {workout.name}
         // </>
         <ListGroup.Item>
             {workout.name} 
-            <button onClick={() => window.confirm('Are you sure you wish to delete this item?')}>Delete</button>
+            <button onClick={() => {if (window.confirm('Are you sure you wish to delete this item?')) onDelete(workout._id) }}>Delete</button>
         </ListGroup.Item>
     );
 }

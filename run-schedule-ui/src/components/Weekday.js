@@ -4,7 +4,7 @@ import { ListGroup } from 'react-bootstrap';
 import Popup from 'reactjs-popup';
 import CreateWorkout from "../pages/CreateWorkout";
 
-function Weekday({ weekday, workouts }) {
+function Weekday({ weekday, workouts, onDelete }) {
 
     // Filter for weekday specific workouts
     // const filterWorkouts = async 
@@ -40,7 +40,7 @@ function Weekday({ weekday, workouts }) {
                 </Popup>
             </h3>
             <ListGroup>
-                {workouts.map((workout, i) => <Workout workout={workout} key={i} />)}
+                {workouts.map((workout, i) => <Workout workout={workout} key={i} onDelete={onDelete}/>)}
             </ListGroup>
 
         </>
