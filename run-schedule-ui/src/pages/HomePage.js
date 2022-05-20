@@ -21,8 +21,8 @@ function HomePage() {
     }
 
     // Function for summing all workout distance
-    const sumWorkouts = async () => {
-        const response = await fetch(`/sum_workouts?unit=${units}`);
+    const sumWorkouts = async (unit) => {
+        const response = await fetch(`/sum_workouts?unit=${unit}`);
         const data = await response.json();
         setDistance(data.Distance);
     }
@@ -32,7 +32,7 @@ function HomePage() {
     // Call load workouts
     useEffect(() => {
         loadWorkouts();
-        sumWorkouts();
+        sumWorkouts(units);
     }, []);
 
     // Function for deleting a workout by id
@@ -58,7 +58,7 @@ function HomePage() {
             </label>
             <Calendar workouts={workouts} onDelete={onDelete} />
             {/* <iframe src="https://runsmartproject.com/calculator/embed/index.php?title=false" width="600" height="1000" frameborder="0"></iframe> */}
-            <WeeklyDistance distance={distance} sumWorkouts={sumWorkouts} setUnits={setUnits}  />
+            <WeeklyDistance distance={distance} sumWorkouts={sumWorkouts} units={units} setUnits={setUnits}  />
         </>
     );
 }
