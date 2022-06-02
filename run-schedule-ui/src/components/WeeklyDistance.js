@@ -24,8 +24,8 @@ function WeeklyDistance({ distance, sumWorkouts, units, setUnits }) {
             <p>Weekly Distance:</p>
             <p>{distance.toFixed(2)} {units}</p>
             <ButtonGroup>
-                <Button onClick={() => updateDistance("miles")}>Miles</Button>
-                <Button onClick={() => updateDistance("km")}>Km</Button>
+                <Button className="unit-button" onClick={() => updateDistance("miles")}> <span className="tooltiptext">Click to convert to km</span>Miles</Button>
+                <Button className="unit-button" onClick={() => updateDistance("km")}><span className="tooltiptext">Click to convert to miles</span>Km</Button>
             </ButtonGroup>
         </div>
     );
