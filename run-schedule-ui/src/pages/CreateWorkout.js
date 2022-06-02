@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WorkoutDetails from '../components/WorkoutDetails';
 
-function CreateWorkout({ weekday }) {
+function CreateWorkout({ weekday, loadWorkouts }) {
     // Fields to be filled for workout
     const [name, setName] = useState('');
     const [day, setDay] = useState(weekday);
@@ -28,7 +28,7 @@ function CreateWorkout({ weekday }) {
             alert(`Workout added to schedule.`);
         }
         // Return to home page
-        navigate.push("/");
+        loadWorkouts();
     };
 
     return (
