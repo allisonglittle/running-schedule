@@ -9,7 +9,7 @@ function HomePage() {
     // workouts: array of workouts in db
     // setWorkouts: function to update workouts array
     const [workouts, setWorkouts] = useState([]);
-    // const history = useHistory();
+
     const [distance, setDistance] = useState(0);
     const [units, setUnits] = useState("miles");
 
@@ -18,6 +18,7 @@ function HomePage() {
         const response = await fetch('/all_workouts/');
         const data = await response.json();
         setWorkouts(data);
+        sumWorkouts(units);
     }
 
     // Function for summing all workout distance
@@ -27,19 +28,15 @@ function HomePage() {
         setDistance(data.Distance);
     }
 
-
-
     // Call load workouts
     useEffect(() => {
         loadWorkouts();
-        sumWorkouts(units);
     }, []);
 
     // Function for deleting a workout by id
     const onDelete = async _id => {
         const response = await fetch(`/workouts/${_id}`, { method: 'DELETE' });
         if (response.status === 204) {
-            setWorkouts(workouts.filter(m => m._id !== _id));
             loadWorkouts();
         } else {
             console.error(`Failed to delete workout with _id = ${_id}, status code ${response.status}`);
@@ -56,8 +53,7 @@ function HomePage() {
                     <option>Week 2</option>
                 </select>
             </label>
-            <Calendar workouts={workouts} onDelete={onDelete} />
-            {/* <iframe src="https://runsmartproject.com/calculator/embed/index.php?title=false" width="600" height="1000" frameborder="0"></iframe> */}
+            <Calendar workouts={workouts} onDelete={onDelete} loadWorkouts={loadWorkouts} />
             <WeeklyDistance distance={distance} sumWorkouts={sumWorkouts} units={units} setUnits={setUnits}  />
         </>
     );
