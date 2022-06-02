@@ -1,18 +1,10 @@
 import * as workouts from './run_schedule_model.mjs';
 import express from 'express';
-import fetch from "node-fetch";
-// import cors from 'cors';
-
-// const corsOptions = {
-//     origin: 'http://localhost:8000',
-//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// };
 
 const PORT = 3000;
 
 const app = express();
 app.use(express.json());
-// app.use(cors);
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`);
@@ -73,7 +65,6 @@ app.delete('/workouts/:_id', (req, res) => {
 app.get('/sum_workouts', (req, res) => {
     workouts.sumOfDistance(req.query.unit)
         .then(distance => {
-            console.log(distance);
             res.status(200).json({ Distance: distance });
         })
         .catch(error => {
