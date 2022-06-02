@@ -2,9 +2,6 @@
 import mongoose from 'mongoose';
 import fetch from "node-fetch";
 
-// Define fetch
-// const fetch = require('node-fetch');
-
 // Identify database run_schedule_db in the MongoDB server running locally on port 27017
 mongoose.connect(
     'mongodb://localhost:27017/run_schedule_db',
@@ -40,6 +37,7 @@ const workoutSchema = mongoose.Schema({
  */
 const Workout = mongoose.model("Workout", workoutSchema);
 
+
 /**
  * Create a workout
  * @param {String} name 
@@ -59,6 +57,7 @@ const createWorkout = async (name, day, distance, duration, target, pace) => {
     return workout.save()
 }
 
+
 /**
  * Return all workouts that fit the filter, projection and the limit parameters
  * @param {Object} filter 
@@ -73,6 +72,7 @@ const findWorkouts = async (filter, projection, limit) => {
     return query.exec();
 }
 
+
 /**
  * Delete workout with the specified id.
  * @param {String} _id 
@@ -84,37 +84,43 @@ const deleteById = async (_id) => {
     return result.deletedCount;
 }
 
+
+/**
+ * Uses a GET request to microservice to convert miles to km
+ * @param {Number} milesDistance 
+ * @returns Distance in km
+ */
+const convertKm = async (milesDistance) => {
+    // Use unit converter to get distance in km
+    const url = `https://distance-conversion.herokuapp.com/miles-to-km?miles=${milesDistance}`;
+    const km = fetch(url, { method: "Get" })
+        .then(res => {
+            console.log(res);
+            return res.json();
+        })
+        .then((json) => {
+            console.log(json);
+            return json.km;
+        });
+    return km;
+}
+
 /**
  * Get the sum of workout distances by specifying units
  * @param {String} unit 
  * @returns 
  */
 const sumOfDistance = async (unit) => {
-
     // Get sum of distance in miles
     const workouts = findWorkouts();
     console.log(workouts);
-
     const sumWorkouts = await Workout.aggregate([
         { $group: { _id: "$week", sumDistance: { $sum: "$distance" } } }
     ]);
-
     const milesDistance = sumWorkouts[0].sumDistance;
 
     if (unit === "km") {
-        // Use unit converter to get distance in km
-        const url = `https://distance-conversion.herokuapp.com/miles-to-km?miles=${milesDistance}`;
-        const km = fetch(url, {method: "Get"})
-            .then(res => {
-                console.log(res);
-                return res.json();
-            })
-            .then((json) => {
-                console.log(json);
-                return json.km;
-            });
-        return km;
-
+        return convertKm(milesDistance);
     }
     return milesDistance;
 }
