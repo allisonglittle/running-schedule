@@ -48,7 +48,7 @@ app.delete('/workouts/:_id', (req, res) => {
         .then(deletedCount => {
             if (deletedCount == 1) {
                 // Workout successfuly deleted
-                res.status(204).sned();
+                res.status(204).send();
             } else {
                 res.status(400).json({ Error: 'Workout not found' });
             }
