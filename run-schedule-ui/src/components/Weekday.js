@@ -4,10 +4,9 @@ import { ListGroup } from 'react-bootstrap';
 import Popup from 'reactjs-popup';
 import CreateWorkout from "../pages/CreateWorkout";
 
-function Weekday({ weekday, workouts, onDelete }) {
+function Weekday({ weekday, workouts, onDelete, loadWorkouts }) {
 
     // Filter for weekday specific workouts
-    // const filterWorkouts = async 
     let dayName = null;
     switch (weekday) {
         case 1:
@@ -36,7 +35,7 @@ function Weekday({ weekday, workouts, onDelete }) {
         <>
             <h3 className="Day-name">{dayName} 
                 <Popup className='popup-content' closeOnDocumentClick={true} trigger={<button className="Add-button">+</button>}>
-                    <CreateWorkout weekday={weekday}/>
+                    <CreateWorkout weekday={weekday} loadWorkouts={loadWorkouts}/>
                 </Popup>
             </h3>
             <ListGroup>
